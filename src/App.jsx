@@ -8,6 +8,7 @@ import CourseDetails from './pages/students/CourseDetails';
 import MyEnrollment from './pages/students/MyEnrollment';
 import Player from './pages/students/Player';
 import Loading from './components/students/Loading';
+import TeacherDetails from './pages/students/TeacherDetails';
 
 // Educator Pages
 import Educator from './pages/educator/Educator';
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/my-enrollments" element={<MyEnrollment />} />
         <Route path="/player/:courseId" element={<Player />} />
+        <Route path="/teacher/:educatorId" element={<TeacherDetails />} />
         <Route path="/loading/:path" element={<Loading />} />
 
         {/* Educator Routes with nested Outlet */}

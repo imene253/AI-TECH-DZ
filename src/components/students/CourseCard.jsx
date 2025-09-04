@@ -9,6 +9,9 @@ const CourseCard = ({ course }) => {
   // compute once instead of multiple calls
   const rating = calculateRating ? calculateRating(course) : 0;
   const reviewCount = course?.reviews?.length || 22; // fallback to 22 if not provided
+  const educatorName = typeof course?.educator === 'object' && course?.educator
+    ? (course.educator.name || 'Instructor')
+    : 'Instructor';
 
   return (
     <Link
@@ -26,7 +29,7 @@ const CourseCard = ({ course }) => {
       {/* Content */}
       <div className="p-3 text-left">
         <h3 className="text-base font-semibold">{course.courseTitle}</h3>
-        <p className="text-sm text-gray-600">{course.educator.name}</p>
+        <p className="text-sm text-gray-600">{educatorName}</p>
 
         {/* Rating */}
         <div className="flex items-center space-x-2 mt-2">
