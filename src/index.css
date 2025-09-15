@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +8,99 @@
 
 /* Apply general font */
 * {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Ensure images load properly */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove any debug borders from images */
+img[src*="/images/"] {
+  border: none;
+}
+
+/* Ensure proper layout and spacing */
+.container {
+  max-width: 1440px;
+}
+
+/* Fix any potential layout issues */
+section {
+  position: relative;
+}
+
+/* Hero section specific styles */
+.hero-mascot {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-feature-card {
+  transition: all 0.3s ease;
+}
+
+.hero-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(84, 197, 248, 0.2);
+}
+
+/* Responsive hero section improvements */
+@media (max-width: 1024px) {
+  .hero-decorative {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-main-image {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .hero-feature-card {
+    transform: scale(0.9);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .hero-main-image {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-feature-card {
+    transform: scale(0.8);
+  }
+}
+
+/* Ensure proper text rendering for Arabic */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Override for specific elements that should be LTR */
+.ltr {
+  direction: ltr;
+  text-align: left;
 }
 
 @layer base {
