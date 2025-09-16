@@ -5,6 +5,7 @@ import FeaturesSection from './FeaturesSection';
 import TestimonialsSection from './TestimonialsSection';
 import Footer from './Footer';
 
+
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-white">

@@ -49,7 +49,7 @@ const HeroSection = () => {
           {/* Text content */}
           <div className="text-center">
             <h1 className="text-base font-bold text-[#101828] leading-tight mb-1">
-              اكتشف مع <span className="text-[#24BB8C]">رامي</span><br />
+              اكتشف مع <span className="text-[#54C5F8]">رامي</span><br />
               سكول <span className="text-[#54C5F8]">أفضل</span> الدروس
             </h1>
             <p className="text-[10px] text-[#475467] max-w-sm mx-auto">
@@ -84,7 +84,7 @@ const HeroSection = () => {
 
             {/* Headline */}
             <h1 className="relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#101828] leading-tight mb-4">
-              اكتشف مع <span className="text-[#24BB8C]">رامي</span><br />
+              اكتشف مع <span className="text-[#54C5F8]">رامي</span><br />
               سكول <span className="text-[#54C5F8]">أفضل</span> الدروس
             </h1>
 

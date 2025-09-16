@@ -42,11 +42,24 @@ const Navigation = () => {
           
           {/* Desktop Menu Items */}
           <div className="hidden lg:flex items-center order-3">
-            <div className="flex items-center gap-2.5 p-5 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
+            <div className="flex items-center gap-2.5 p-5 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" onClick={() => {
+              if (window.location.pathname !== '/') {
+                window.location.assign('/');
+              } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}>
               <FaHome className="w-6 h-6 text-[#656565]" />
               <span className="text-[#656565] text-base font-normal">الرئيسية</span>
             </div>
-            <div className="flex items-center gap-2.5 p-5 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
+            <div className="flex items-center gap-2.5 p-5 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" onClick={() => {
+              if (window.location.pathname !== '/courses') {
+                window.location.assign('/courses');
+                return;
+              }
+              const el = document.getElementById('courses');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}>
               <FaBook className="w-6 h-6 text-[#656565]" />
               <span className="text-[#656565] text-base font-normal">الدورات</span>
             </div>
@@ -112,11 +125,26 @@ const Navigation = () => {
 
         {/* Mobile Menu Items */}
         <div className="flex flex-col p-4">
-          <div className="flex items-center gap-3 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" onClick={() => {
+            if (window.location.pathname !== '/') {
+              window.location.assign('/');
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            setIsMobileMenuOpen(false);
+          }}>
             <FaHome className="w-5 h-5 text-[#656565]" />
             <span className="text-[#656565] text-base font-normal">الرئيسية</span>
           </div>
-          <div className="flex items-center gap-3 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" onClick={() => {
+            if (window.location.pathname !== '/courses') {
+              window.location.assign('/courses');
+              return;
+            }
+            const el = document.getElementById('courses');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setIsMobileMenuOpen(false);
+          }}>
             <FaBook className="w-5 h-5 text-[#656565]" />
             <span className="text-[#656565] text-base font-normal">الدورات</span>
           </div>

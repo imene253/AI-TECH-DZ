@@ -49,7 +49,7 @@ const FeaturesSection = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#101828] leading-tight text-center lg:text-right">
               دورات <span className="text-[#54C5F8]">مميزة</span>
               <br />
-              مع <span className="text-[#20B486]">أفضل</span> الأساتذة
+              مع <span className="text-[#54C5F8]">أفضل</span> الأساتذة
             </h2>
           </div>
           
@@ -118,7 +118,7 @@ const FeaturesSection = () => {
               
               {/* View All button */}
               <div className="sm:col-span-2 flex justify-center items-center mt-8">
-                <button className="bg-gradient-to-br from-[#54C5F8] to-[#54C5F8] rounded-2xl px-8 py-4 text-white font-bold text-xl hover:shadow-lg transition-shadow duration-300 flex items-center gap-3">
+                <button onClick={() => window.location.assign('/courses')} className="bg-gradient-to-br from-[#54C5F8] to-[#54C5F8] rounded-2xl px-8 py-4 text-white font-bold text-xl hover:shadow-lg transition-shadow duration-300 flex items-center gap-3">
                   <span>الكل</span>
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
