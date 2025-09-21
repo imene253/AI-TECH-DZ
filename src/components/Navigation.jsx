@@ -63,7 +63,13 @@ const Navigation = () => {
               <FaBook className="w-6 h-6 text-[#656565]" />
               <span className="text-[#656565] text-base font-normal">الدورات</span>
             </div>
-            <div className="flex items-center gap-2.5 p-5 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
+            <div className="flex items-center gap-2.5 p-5 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" onClick={() => {
+              if (window.location.pathname !== '/my-courses') {
+                window.location.assign('/my-courses');
+                return;
+              }
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}>
               <FaChartLine className="w-6 h-6 text-[#656565]" />
               <span className="text-[#656565] text-base font-normal">دروسي</span>
             </div>
@@ -148,7 +154,14 @@ const Navigation = () => {
             <FaBook className="w-5 h-5 text-[#656565]" />
             <span className="text-[#656565] text-base font-normal">الدورات</span>
           </div>
-          <div className="flex items-center gap-3 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" onClick={() => {
+            if (window.location.pathname !== '/my-courses') {
+              window.location.assign('/my-courses');
+              return;
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setIsMobileMenuOpen(false);
+          }}>
             <FaChartLine className="w-5 h-5 text-[#656565]" />
             <span className="text-[#656565] text-base font-normal">دروسي</span>
           </div>

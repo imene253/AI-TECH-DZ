@@ -1,38 +1,6 @@
 import React, { useState } from "react";
-
-const courses = [
-  {
-    id: "c1",
-    category: "programming",
-    title: "تطبيق باستخدام فلاتر",
-    subtitle: "ابنِ تطبيقك الأول",
-    image: "/images/course-img-1.png",
-    duration: "08 hr 12 mins",
-    author: "بالحاج",
-    price: "$17.84",
-  },
-  {
-    id: "c2",
-    category: "Design",
-    title: "Figma تصميم واجهات",
-    subtitle: "احصول على وظيفة في تصميم واجهة المستخدم",
-    image: "/images/course-img-2.png",
-    duration: "08 hr 12 mins",
-    author: "شيروف",
-    price: "$17.84",
-  },
-  {
-    id: "c3",
-    category: "programming",
-    title: "موقعك الأول باستخدام React",
-    subtitle: "ابدأ ببناء موقعك اليوم",
-    image: "/images/course-img-3.png",
-    duration: "08 hr 12 mins",
-    author: "بوخميس",
-    price: "$29.0",
-    tag: "Free",
-  },
-];
+import { Link } from "react-router-dom";
+import { courses } from "../data/courses";
 
 // Teacher chip component
 const CategoryChip = ({ label, onClick, active }) => (
@@ -75,7 +43,7 @@ const SearchBar = ({ value, onChange }) => (
 
 // Course card
 const CourseCard = ({ course }) => (
-  <div className="w-[320px] shadow-md bg-white rounded-lg overflow-hidden">
+  <Link to={`/courses/${course.id}`} className="w-[320px] shadow-md bg-white rounded-lg overflow-hidden block hover:shadow-lg transition">
     {/* Image */}
     <div
       className="w-full h-[180px] bg-center bg-cover relative"
@@ -102,7 +70,7 @@ const CourseCard = ({ course }) => (
       <div className="flex items-center justify-between mt-4">
         <div className="flex items-center gap-2">
           <img
-            src="/images/avatar-figma.png"
+            src={course.teacherPhoto || "/images/avatar-figma.png"}
             alt="author"
             className="w-8 h-8 rounded-full"
           />
@@ -122,7 +90,7 @@ const CourseCard = ({ course }) => (
         </div>
       </div>
     </div>
-  </div>
+  </Link>
 );
 
 // Main section
@@ -130,7 +98,7 @@ const CoursesSection = () => {
   const [search, setSearch] = useState("");
   const [selectedTeacher, setSelectedTeacher] = useState("");
 
-  // Normalize helper: lowercase, trim, strip Arabic diacritics + tatweel
+  
   const normalize = (value) => {
     const s = (value ?? "").toString().toLocaleLowerCase("ar").trim();
     return s
@@ -138,7 +106,7 @@ const CoursesSection = () => {
       .replace(/\u0640/g, ""); // tatweel
   };
 
-  // Filter courses — search has priority over teacher chip
+  // Filter courses 
   const filteredCourses = courses.filter((course) => {
     const q = normalize(search);
 

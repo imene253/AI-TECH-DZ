@@ -1,32 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ImageWithFallback from './ImageWithFallback';
+import { courses as sharedCourses } from '../data/courses';
 
 const FeaturesSection = () => {
-  const courses = [
-    {
-      id: 1,
-      category: "Design",
-      title: "تصميم واجهات Figma",
-      description: "احصل على وظيفة في تصميم واجهة المستخدم",
-      instructor: "Jane Cooper",
-      price: "$17.84",
-      duration: "08 hr 12 mins",
-      image: "/images/course-1.png",
-      categoryColor: "text-[#20B486]"
-    },
-    {
-      id: 2,
-      category: "programming", 
-      title: "تطبيق باستخدام فلاتر",
-      description: "ابن تطبيقك الأول",
-      instructor: "Jane Cooper",
-      price: "$17.84",
-      duration: "08 hr 12 mins", 
-      image: "/images/course-2.png",
-      categoryColor: "text-[#20B486]"
-    },
-   
-  ];
+  // Use first two courses for the landing page feature
+  const courses = sharedCourses.slice(0, 2).map(c => ({
+    id: c.id,
+    category: c.category,
+    title: c.title,
+    description: c.subtitle || c.description,
+    instructor: c.author,
+    price: c.price,
+    duration: c.duration,
+    image: c.image,
+    categoryColor: "text-[#20B486]",
+  }));
 
   return (
     <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
@@ -57,7 +46,7 @@ const FeaturesSection = () => {
           <div className="w-full lg:w-2/3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
               {courses.map((course) => (
-                <div key={course.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+                <Link to={`/courses/${course.id}`} key={course.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 block">
                   
                   {/* Course image */}
                   <div className="relative h-48 sm:h-40 md:h-48 overflow-hidden">
@@ -97,14 +86,14 @@ const FeaturesSection = () => {
                     
                     {/* teachers and price */}
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gradient-to-r from-[#20B486] to-[#54C5F8] rounded-full flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">
-                            {course.instructor.charAt(0)}
-                          </span>
-                        </div>
-                        <span className="text-sm text-gray-600">{course.instructor}</span>
-                      </div>
+                       <div className="flex items-center gap-2">
+                         <img
+                           src={(sharedCourses.find(c=>c.id===course.id)?.teacherPhoto) || "/images/avatar-figma.png"}
+                           alt={course.instructor}
+                           className="w-8 h-8 rounded-full object-cover"
+                         />
+                         <span className="text-sm text-gray-600">{course.instructor}</span>
+                       </div>
                       
                       <div className="text-right">
                         <span className="text-xl font-bold text-[#20B486]">
@@ -113,7 +102,7 @@ const FeaturesSection = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
               
               {/* View All button */}
